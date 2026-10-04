@@ -1,4 +1,5 @@
-.org $080D
+; compile with: cl65.exe -t none main.s -o TEST.CART
+.org $C000
 
 .segment "STARTUP"
 .segment "INIT"
@@ -8,19 +9,11 @@
 SCREEN      = $FF5F
 BSOUT       = $FFD2
 
-main:
-    lda #$03
-    jsr SCREEN
-    ldx #0
+header:
+    .byte "CX16"
 
-loop:
-    lda text, x
-    beq end
-    jsr BSOUT
-    inx
-    bra loop
+_start:
+    jmp loop
 
-text:
-    .literal "HELLO WORLD!", 0
 end:
     rts
