@@ -6,14 +6,18 @@
 .segment "ONCE"
 .segment "CODE"
 
-SCREEN      = $FF5F
-BSOUT       = $FFD2
+VERA_ADDR_L = $9F20
+VERA_ADDR_M = $9F21
+VERA_ADDR_H = $9F22
+
+VERA_DATA_0 = $9F23
+VERA_DATA_1 = $9F24
 
 header:
     .byte "CX16"
 
 _start:
-    jmp loop
+    jmp _start
 
 end:
     rts

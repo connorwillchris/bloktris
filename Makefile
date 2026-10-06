@@ -1,5 +1,10 @@
+X16_EMULATOR=$(HOME)/Dev/cx16
+
 all:
-	python3 make.py
+	cl65 -t none src/main.s -o tmp/TEST.CART
 
 clean:
 	rm -rf tmp
+
+run: all
+	x16emu -cartbin ./tmp/TEST.CART -rom $(X16_EMULATOR)/rom.bin
